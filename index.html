@@ -160,6 +160,52 @@ nav ul li a:hover {
   display: flex;
 }
 
+  /* ========================
+MOBILE NAVIGATION
+======================== */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  transition: 0.3s ease;
+}
+
+@media(max-width:900px){
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #1B1B1B;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 40px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .desktop-quote {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
 /* ========================
 HERO
 ======================== */
@@ -569,7 +615,7 @@ RESPONSIVE
     <img src="https://image2url.com/r2/default/images/1772197966486-d1b563e9-7f47-4ddd-bb1f-6a5480d1bab1.png" alt="Niorpixel Logo">
   </a>
 
-  <ul>
+  <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -588,6 +634,14 @@ RESPONSIVE
   </ul>
 
   <a href="#contact" class="btn-primary">Get Started</a>
+  
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
 </nav>
 
 <!-- HERO -->
@@ -773,6 +827,21 @@ RESPONSIVE
     © 2026 Niorpixel. All Rights Reserved.
   </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+      navLinks.classList.toggle("active");
+    });
+  }
+});
+</script>
+  
 </body>
 
 </html>
+
