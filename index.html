@@ -834,6 +834,8 @@ RESPONSIVE
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+
+  // Mobile menu toggle
   const menuToggle = document.getElementById("mobile-menu");
   const navLinks = document.querySelector(".nav-links");
 
@@ -842,19 +844,16 @@ document.addEventListener("DOMContentLoaded", function() {
       navLinks.classList.toggle("active");
     });
   }
-});
 
-document.addEventListener("DOMContentLoaded", function() {
+  // Branch dropdown toggle (for mobile click support)
+  const branchToggle = document.getElementById("branch-toggle");
+  const branchMenu = document.getElementById("branch-menu");
 
-  // Mobile menu
-  const menuToggle = document.getElementById("mobile-menu");
-  const navLinks = document.querySelector(".nav-links");
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function() {
-      navLinks.classList.toggle("active");
+  if (branchToggle && branchMenu) {
+    branchToggle.addEventListener("click", function(e) {
+      e.stopPropagation();
+      branchMenu.classList.toggle("active");
     });
-  }
 
     // Close dropdown when clicking outside
     document.addEventListener("click", function() {
@@ -868,6 +867,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+
 
 
 
