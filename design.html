@@ -144,6 +144,10 @@ nav ul li a:hover {
   min-width: 200px;
 }
 
+.niche-menu.active {
+  display: flex;
+}
+
 .niche-menu a {
   padding: 12px 15px;
   text-decoration: none;
@@ -158,6 +162,52 @@ nav ul li a:hover {
 
 .niche-dropdown:hover .niche-menu {
   display: flex;
+}
+
+  /* ========================
+MOBILE NAVIGATION
+======================== */
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  transition: 0.3s ease;
+}
+
+@media(max-width:900px){
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #1B1B1B;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 40px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .desktop-quote {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
 }
 
 /* ========================
@@ -577,19 +627,28 @@ RESPONSIVE
     <li><a href="#contact">Contact</a></li>
   </ul>
 
-<!-- Branch Dropdown -->
+ <!-- Branch Dropdown -->
     <li class="niche-dropdown">
-      <button class="niche-btn">Branches ▾</button>
-      <div class="niche-menu">
-        <a href="index.html">Niorpixel Studio</a>
+  <button class="niche-btn" id="branch-toggle">Branches ▾</button>
+  <div class="niche-menu" id="branch-menu">
+        <a href="design.html">Niorpixel Design Studio</a>
         <a href="digital.html">Niorpixel Digital Solutions</a>
       </div>
     </li>
-  
+
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSd82N94uzmqMmGXy0WIbzO395V5mmzOroYmxmmQhyv29F7WFg/viewform" class="btn-primary">
     Get a Quote
   </a>
 
+
+  <!-- Hamburger Icon -->
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  
 </nav>
 
 <!-- HERO -->
@@ -877,6 +936,50 @@ Thanku”
 
 </a>
 
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+      navLinks.classList.toggle("active");
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Mobile menu
+  const menuToggle = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Branch dropdown
+  const branchToggle = document.getElementById("branch-toggle");
+  const branchMenu = document.getElementById("branch-menu");
+
+  if (branchToggle && branchMenu) {
+    branchToggle.addEventListener("click", function(e) {
+      e.stopPropagation();
+      branchMenu.classList.toggle("active");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function() {
+      branchMenu.classList.remove("active");
+    });
+  }
+
+});
+</script>
+
 </body>
 
 </html>
+
