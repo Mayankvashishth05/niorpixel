@@ -144,6 +144,10 @@ nav ul li a:hover {
   min-width: 200px;
 }
 
+.niche-menu.active {
+  display: flex;
+}
+
 .niche-menu a {
   padding: 12px 15px;
   text-decoration: none;
@@ -623,8 +627,8 @@ RESPONSIVE
 
     <!-- Branch Dropdown -->
     <li class="niche-dropdown">
-      <button class="niche-btn">Branches ▾</button>
-      <div class="niche-menu">
+  <button class="niche-btn" id="branch-toggle">Branches ▾</button>
+  <div class="niche-menu" id="branch-menu">
         <a href="design.html">Niorpixel Design Studio</a>
         <a href="digital.html">Niorpixel Digital Solutions</a>
       </div>
@@ -839,9 +843,40 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Mobile menu
+  const menuToggle = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Branch dropdown
+  const branchToggle = document.getElementById("branch-toggle");
+  const branchMenu = document.getElementById("branch-menu");
+
+  if (branchToggle && branchMenu) {
+    branchToggle.addEventListener("click", function(e) {
+      e.stopPropagation();
+      branchMenu.classList.toggle("active");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function() {
+      branchMenu.classList.remove("active");
+    });
+  }
+
+});
 </script>
   
 </body>
 
 </html>
+
 
