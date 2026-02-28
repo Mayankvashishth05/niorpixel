@@ -937,20 +937,9 @@ Thanku”
 </a>
 
       <script>
-      document.addEventListener("DOMContentLoaded", function() {
-  const menuToggle = document.getElementById("mobile-menu");
-  const navLinks = document.querySelector(".nav-links");
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function() {
-      navLinks.classList.toggle("active");
-    });
-  }
-});
-
 document.addEventListener("DOMContentLoaded", function() {
 
-  // Mobile menu
+  // Mobile menu toggle
   const menuToggle = document.getElementById("mobile-menu");
   const navLinks = document.querySelector(".nav-links");
 
@@ -960,7 +949,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Branch dropdown
+  // Branch dropdown toggle (for mobile click support)
   const branchToggle = document.getElementById("branch-toggle");
   const branchMenu = document.getElementById("branch-menu");
 
@@ -982,5 +971,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+
 
 
