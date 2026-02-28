@@ -856,16 +856,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Branch dropdown
-  const branchToggle = document.getElementById("branch-toggle");
-  const branchMenu = document.getElementById("branch-menu");
-
-  if (branchToggle && branchMenu) {
-    branchToggle.addEventListener("click", function(e) {
-      e.stopPropagation();
-      branchMenu.classList.toggle("active");
-    });
-
     // Close dropdown when clicking outside
     document.addEventListener("click", function() {
       branchMenu.classList.remove("active");
@@ -878,5 +868,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </body>
 
 </html>
+
 
 
